@@ -1,6 +1,15 @@
 import flameLogo from '../assets/flame.svg';
+import {useNavigate} from "react-router-dom";
+import {startTransition} from "react";
 
 export const Start = () => {
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        startTransition(() => {
+            navigate('/');
+        });
+    }
     return (
         <section className="flex flex-col justify-center gap-6 items-center bg-zinc-900 h-screen">
             <div className="flex justify-center align-bottom gap-2">
@@ -32,6 +41,7 @@ export const Start = () => {
             <div className="flex flex-col gap-2 justify-center items-center">
                 <p className="text-white text-sm text-center">Join public chat to see what people have to say!</p>
                 <button
+                    onClick={() => handleNavigate()}
                     className="w-32 h-12 text-white text-lg text-center border bg-zinc-800 rounded-2xl font-bold border-zinc-800 hover:animate-pulse motion-reduce:hover:animate-pulse">Public
                     Chat
                 </button>
